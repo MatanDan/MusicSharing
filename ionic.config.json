@@ -1,0 +1,8 @@
+{
+  "name": "MusicSharing",
+  "app_id": "92ebdee8",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
