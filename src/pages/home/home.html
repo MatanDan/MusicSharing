@@ -3,5 +3,8 @@
     <ion-icon name="logo-facebook"></ion-icon>
     Logout
   </button>
-  <p>Details: {{ userDetails }}</p>
+  <ion-label color="primary">Details:</ion-label>
+  <ion-textarea [innerHtml]="userDetails"></ion-textarea>
+  <ion-label color="primary">Access Token:</ion-label>
+  <ion-item><ion-textarea [ngModel]="facebookAccessToken"></ion-textarea></ion-item>
 </ion-content>

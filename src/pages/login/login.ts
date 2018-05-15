@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Facebook } from "@ionic-native/facebook";
 import { HomePage } from "../home/home";
+import { Platform } from 'ionic-angular';
 
 @Component({
   selector: 'page-login',
@@ -9,13 +10,18 @@ import { HomePage } from "../home/home";
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private facebook: Facebook) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private facebook: Facebook, private plt: Platform) {
+    this.plt.ready().then(readySource => {
+      console.log("ready now on login!");
+      this.checkLoginStatus();
+    });
   }
 
-  async ionViewDidLoad() {
+  async checkLoginStatus() {
     let loginStatus = await this.facebook.getLoginStatus();
     if (loginStatus.status === 'connected') {
       this.navCtrl.push(HomePage);
+      return;
     }
   }
 
