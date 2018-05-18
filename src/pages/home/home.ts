@@ -4,6 +4,7 @@ import { Facebook } from "@ionic-native/facebook";
 import { LoginPage } from "../login/login";
 import { Platform } from 'ionic-angular';
 import { InAppBrowser } from "@ionic-native/in-app-browser";
+import { PagesUtils } from "../../utils/pagesUtils";
 
 @Component({
   selector: 'page-home',
@@ -27,7 +28,7 @@ export class HomePage {
     } else {
       let loginStatus = await this.facebook.getLoginStatus();
       if (loginStatus.status !== 'connected') {
-        this.navCtrl.push(LoginPage);
+        PagesUtils.moveAndRemove(this.navCtrl, LoginPage);
         return;
       } else {
         let profile = await this.facebook.api('me?fields=name,email', []);
@@ -40,7 +41,7 @@ export class HomePage {
 
   async logout() {
     await this.facebook.logout();
-    this.navCtrl.push(LoginPage);
+    PagesUtils.moveAndRemove(this.navCtrl, LoginPage);
   }
 
   async authSpotify() {
