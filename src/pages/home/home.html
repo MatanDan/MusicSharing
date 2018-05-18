@@ -1,10 +1,19 @@
-<ion-content padding class="background-image">
+<ion-content padding>
   <button ion-button round block icon-start (click)="logout()">
     <ion-icon name="logo-facebook"></ion-icon>
     Logout
   </button>
-  <ion-label color="primary">Details:</ion-label>
+  <ion-label color="primary">Facebook Details:</ion-label>
   <ion-textarea [innerHtml]="userDetails"></ion-textarea>
   <ion-label color="primary">Access Token:</ion-label>
-  <ion-item><ion-textarea [ngModel]="facebookAccessToken"></ion-textarea></ion-item>
+  <ion-item>
+    <ion-textarea [ngModel]="facebookAccessToken"></ion-textarea>
+  </ion-item>
+
+  <button ion-button color="secondary" round block (click)="authSpotify()" class="spaceAbove">
+    Auth to Spotify
+  </button>
+  <ion-item>
+    <ion-textarea [ngModel]="URL"></ion-textarea>
+  </ion-item>
 </ion-content>

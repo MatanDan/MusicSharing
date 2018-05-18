@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Facebook } from "@ionic-native/facebook";
 import { LoginPage } from "../login/login";
 import { Platform } from 'ionic-angular';
-
+import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 @Component({
   selector: 'page-home',
@@ -13,7 +13,8 @@ export class HomePage {
   userDetails: string;
   facebookAccessToken: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private facebook: Facebook, private plt: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              private facebook: Facebook, private plt: Platform, private iab: InAppBrowser) {
     this.plt.ready().then(readySource => {
       console.log("ready now on home!");
       this.checkLoginStatus();
@@ -42,4 +43,13 @@ export class HomePage {
     this.navCtrl.push(LoginPage);
   }
 
+  async authSpotify() {
+    var scopes = 'user-read-private user-modify-playback-state';
+    const browser = this.iab.create('https://accounts.spotify.com/authorize' +
+      '?response_type=code' +
+      '&client_id=' + 'de7e56c3748b49feaa5ea0aeb46044ba' +
+      (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+      '&redirect_uri=' + encodeURIComponent('musicsharing://spotifyCallback'));
+    browser.show();
+  }
 }

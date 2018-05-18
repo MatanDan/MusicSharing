@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { Facebook } from "@ionic-native/facebook";
 import { HomePage } from "../home/home";
 import { Platform } from 'ionic-angular';
+import { SplashScreen } from "@ionic-native/splash-screen";
 
 @Component({
   selector: 'page-login',
@@ -10,8 +11,9 @@ import { Platform } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private facebook: Facebook, private plt: Platform) {
+  constructor(public navCtrl: NavController, private splash: SplashScreen, private facebook: Facebook, private plt: Platform) {
     this.plt.ready().then(readySource => {
+      this.splash.hide();
       console.log("ready now on login!");
       this.checkLoginStatus();
     });

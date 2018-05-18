@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { LoginPage } from '../pages/login/login';
+declare var window;
 
 @Component({
   templateUrl: 'app.html'
@@ -17,6 +18,11 @@ export class MyApp {
       statusBar.backgroundColorByHexString('#ffffff');
       splashScreen.hide();
     });
+
+    window.handleOpenURL = function(url) {
+      console.log("!!!!!!!!!!! received url: " + url);
+    }
   }
 }
+
 
