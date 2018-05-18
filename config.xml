@@ -87,17 +87,14 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
-    <plugin name="cordova-plugin-whitelist" spec="1.3.3" />
     <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="1.1.19" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="2.0.5" />
-    <allow-navigation href="http://192.168.1.25:8100" />
     <plugin name="cordova-plugin-buildinfo" spec="^2.0.1" />
     <plugin name="cordova-universal-links-plugin" spec="^1.2.1" />
     <plugin name="cordova-plugin-browsertab" spec="^0.2.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
-    <allow-navigation href="http://192.168.56.1:8100" />
     <plugin name="cordova-plugin-facebook4" spec="^2.1.0">
         <variable name="APP_ID" value="203595250449582" />
         <variable name="APP_NAME" value="MusicSharing" />
@@ -109,5 +106,8 @@
         <variable name="ANDROID_PATHPREFIX" value="/" />
     </plugin>
     <allow-navigation href="http://192.168.1.26:8100" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <allow-navigation href="https://*.spotify.com/*" />
+    <plugin name="cordova-plugin-advanced-http" spec="^1.11.1" />
     <engine name="android" spec="7.0.0" />
 </widget>

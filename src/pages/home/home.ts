@@ -5,14 +5,15 @@ import { LoginPage } from "../login/login";
 import { Platform } from 'ionic-angular';
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { PagesUtils } from "../../utils/pagesUtils";
+import { SpotifyUtils } from "../../utils/spotifyUtils";
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  userDetails: string;
-  facebookAccessToken: string;
+  private userDetails: string;
+  private facebookAccessToken: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private facebook: Facebook, private plt: Platform, private iab: InAppBrowser) {
@@ -45,12 +46,6 @@ export class HomePage {
   }
 
   async authSpotify() {
-    var scopes = 'user-read-private user-modify-playback-state';
-    const browser = this.iab.create('https://accounts.spotify.com/authorize' +
-      '?response_type=code' +
-      '&client_id=' + 'de7e56c3748b49feaa5ea0aeb46044ba' +
-      (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-      '&redirect_uri=' + encodeURIComponent('musicsharing://spotifyCallback'));
-    browser.show();
+    SpotifyUtils.clientAuth(this.iab);
   }
 }
