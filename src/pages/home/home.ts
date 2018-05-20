@@ -18,7 +18,6 @@ export class HomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private facebook: Facebook, private plt: Platform, private iab: InAppBrowser) {
     this.plt.ready().then(readySource => {
-      console.log("ready now on home!");
       this.checkLoginStatus();
     });
   }
@@ -46,6 +45,6 @@ export class HomePage {
   }
 
   async authSpotify() {
-    SpotifyUtils.clientAuth(this.iab);
+    SpotifyUtils.clientAuth(this.iab, this.facebookAccessToken);
   }
 }

@@ -1,16 +1,194 @@
-<ion-content padding>
-  <button ion-button round block icon-start (click)="logout()">
-    <ion-icon name="logo-facebook"></ion-icon>
-    Logout
-  </button>
-  <ion-label color="primary">Facebook Details:</ion-label>
-  <ion-textarea [innerHtml]="userDetails"></ion-textarea>
-  <ion-label color="primary">Access Token:</ion-label>
-  <ion-item>
-    <ion-textarea [ngModel]="facebookAccessToken"></ion-textarea>
-  </ion-item>
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-title col-9>
+        Broadcasts
+      </ion-title>
+      <div float-end>
+        <button ion-button icon-left clear full color="dark">
+          <ion-icon name="add-circle"></ion-icon>
+          NEW
+        </button>
+      </div>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
 
-  <button ion-button color="secondary" round block (click)="authSpotify()" class="spaceAbove">
-    Auth to Spotify
-  </button>
+<ion-content class="home">
+
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img class="album-avatar" src="https://i.scdn.co/image/cba1a22ac5719b187564a82397cd088cdc543fcd">
+      </ion-avatar>
+      <h2>By <span class="i">Matan Danziger</span></h2>
+      <p><ion-icon name="musical-notes"></ion-icon><span> The Show Must Go On</span></p>
+    </ion-item>
+
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col col-5>
+        <button ion-button icon-left round full color="light">
+          <ion-icon name="person-add"></ion-icon>
+          <div>join</div>
+        </button>
+      </ion-col>
+      <ion-col col-6 class="members">
+        <button ion-button icon-left clear small color="dark">
+          <ion-icon name="people"></ion-icon>
+          <div>12 members</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img class="album-avatar" src="https://i.scdn.co/image/cba1a22ac5719b187564a82397cd088cdc543fcd">
+      </ion-avatar>
+      <h2>By <span class="i">Matan Danziger</span></h2>
+      <p><ion-icon name="musical-notes"></ion-icon><span> The Show Must Go On</span></p>
+    </ion-item>
+
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col col-5>
+        <button ion-button icon-left round full color="light">
+          <ion-icon name="person-add"></ion-icon>
+          <div>join</div>
+        </button>
+      </ion-col>
+      <ion-col col-6 class="members">
+        <button ion-button icon-left clear small color="dark">
+          <ion-icon name="people"></ion-icon>
+          <div>12 members</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img class="album-avatar" src="https://i.scdn.co/image/cba1a22ac5719b187564a82397cd088cdc543fcd">
+      </ion-avatar>
+      <h2>By <span class="i">Matan Danziger</span></h2>
+      <p><ion-icon name="musical-notes"></ion-icon><span> The Show Must Go On</span></p>
+    </ion-item>
+
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col col-5>
+        <button ion-button icon-left round full color="light">
+          <ion-icon name="person-add"></ion-icon>
+          <div>join</div>
+        </button>
+      </ion-col>
+      <ion-col col-6 class="members">
+        <button ion-button icon-left clear small color="dark">
+          <ion-icon name="people"></ion-icon>
+          <div>12 members</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img class="album-avatar" src="https://i.scdn.co/image/cba1a22ac5719b187564a82397cd088cdc543fcd">
+      </ion-avatar>
+      <h2>By <span class="i">Matan Danziger</span></h2>
+      <p><ion-icon name="musical-notes"></ion-icon><span> The Show Must Go On</span></p>
+    </ion-item>
+
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col col-5>
+        <button ion-button icon-left round full color="light">
+          <ion-icon name="person-add"></ion-icon>
+          <div>join</div>
+        </button>
+      </ion-col>
+      <ion-col col-6 class="members">
+        <button ion-button icon-left clear small color="dark">
+          <ion-icon name="people"></ion-icon>
+          <div>12 members</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img class="album-avatar" src="https://i.scdn.co/image/cba1a22ac5719b187564a82397cd088cdc543fcd">
+      </ion-avatar>
+      <h2>By <span class="i">Matan Danziger</span></h2>
+      <p><ion-icon name="musical-notes"></ion-icon><span> The Show Must Go On</span></p>
+    </ion-item>
+
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col col-5>
+        <button ion-button icon-left round full color="light">
+          <ion-icon name="person-add"></ion-icon>
+          <div>join</div>
+        </button>
+      </ion-col>
+      <ion-col col-6 class="members">
+        <button ion-button icon-left clear small color="dark">
+          <ion-icon name="people"></ion-icon>
+          <div>12 members</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+    </ion-row>
+  </ion-card>
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img class="album-avatar" src="https://i.scdn.co/image/cba1a22ac5719b187564a82397cd088cdc543fcd">
+      </ion-avatar>
+      <h2>By <span class="i">Matan Danziger</span></h2>
+      <p><ion-icon name="musical-notes"></ion-icon><span> The Show Must Go On</span></p>
+    </ion-item>
+
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col col-5>
+        <button ion-button icon-left round full color="light">
+          <ion-icon name="person-add"></ion-icon>
+          <div>join</div>
+        </button>
+      </ion-col>
+      <ion-col col-6 class="members">
+        <button ion-button icon-left clear small color="dark">
+          <ion-icon name="people"></ion-icon>
+          <div>12 members</div>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+    </ion-row>
+  </ion-card>
+
 </ion-content>

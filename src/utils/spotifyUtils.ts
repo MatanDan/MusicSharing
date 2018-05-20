@@ -1,9 +1,12 @@
 import { HTTP } from '@ionic-native/http';
-import {InAppBrowser} from "@ionic-native/in-app-browser";
+import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 export class SpotifyUtils {
 
-  public static clientAuth(iab: InAppBrowser) {
+  static facebookAccessToken: string;
+
+  public static clientAuth(iab: InAppBrowser, facebookAccessToken: string) {
+    this.facebookAccessToken = facebookAccessToken;
     var scopes = 'user-read-private user-modify-playback-state';
     let URL = 'https://accounts.spotify.com/authorize' +
       '?response_type=code' +

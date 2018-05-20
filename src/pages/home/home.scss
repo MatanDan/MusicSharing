@@ -1,5 +1,25 @@
 page-home {
-  .spaceAbove {
-    margin-top: 15%;
+  .home {
+    background-color: #ff0f50;
+
+    .center {
+      text-align: center;
+    }
+    .header {
+      font-size: 150%;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .members {
+      margin-top: 1.5%;
+    }
+    .album-avatar {
+      width: 64px;
+      height: 64px;
+    }
+
+    ion-card {
+    }
   }
 }
