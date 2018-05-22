@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {App, NavController, NavParams} from 'ionic-angular';
-import { Facebook } from "@ionic-native/facebook";
 import {PagesUtils} from "../../utils/pagesUtils";
 import {LoginPage} from "../login/login";
+import {AuthProvider} from "../../providers/auth/auth";
 
 @Component({
   selector: 'page-profile',
@@ -10,12 +10,14 @@ import {LoginPage} from "../login/login";
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private app: App, private facebook: Facebook) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private app: App, private auth: AuthProvider) {
   }
 
   async logout() {
-    await this.facebook.logout();
-    PagesUtils.moveAndRemove(this.app.getRootNav(), LoginPage);
+    let isLoggedOut = await this.auth.logout();
+    if (isLoggedOut) {
+      PagesUtils.moveAndRemove(this.app.getRootNav(), LoginPage);
+    }
   }
 
 }

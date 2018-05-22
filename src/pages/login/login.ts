@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { Facebook } from "@ionic-native/facebook";
+import {NavController, ToastController} from 'ionic-angular';
 import { Platform } from 'ionic-angular';
 import { PagesUtils } from "../../utils/pagesUtils";
 import { TabsPage } from "../tabs/tabs";
+import { AuthProvider } from "../../providers/auth/auth";
 
 @Component({
   selector: 'page-login',
@@ -11,26 +11,30 @@ import { TabsPage } from "../tabs/tabs";
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, private facebook: Facebook, private plt: Platform) {
+  constructor(public navCtrl: NavController, private toastCtrl: ToastController,
+              private auth: AuthProvider, private plt: Platform) {
     this.plt.ready().then(readySource => {
       this.checkLoginStatus();
     });
   }
 
   async checkLoginStatus() {
-    let loginStatus = await this.facebook.getLoginStatus();
-    if (loginStatus.status === 'connected') {
+    let isLoggedIn = await this.auth.isLoggedIn();
+    if (isLoggedIn) {
       PagesUtils.moveAndRemove(this.navCtrl, TabsPage);
     }
   }
 
-  async loginWithFacebook() {
-    try {
-      await this.facebook.login(['email', 'public_profile']);
-      let profile = await this.facebook.api('me?fields=name,email', []);
-      PagesUtils.moveAndRemove(this.navCtrl, TabsPage, { profile: profile });
-    } catch (error) {
-      console.log(error);
+  async login() {
+    let isLoggedIn = await this.auth.login();
+    if (isLoggedIn) {
+      PagesUtils.moveAndRemove(this.navCtrl, TabsPage);
+    } else {
+      this.toastCtrl.create({
+        message: 'Failed to access facebook servers. Please try again.',
+        duration: 2500,
+        position: 'middle'
+      });
     }
   }
 

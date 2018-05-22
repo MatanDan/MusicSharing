@@ -13,6 +13,7 @@ import { TabsPage } from "../pages/tabs/tabs";
 import { LoginPage } from "../pages/login/login";
 import { ProfilePage } from "../pages/profile/profile";
 import { AboutPage } from "../pages/about/about";
+import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AboutPage } from "../pages/about/about";
     Facebook,
     InAppBrowser,
     HTTP,
+    AuthProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
