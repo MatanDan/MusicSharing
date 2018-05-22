@@ -9,13 +9,19 @@ import { HTTP } from '@ionic-native/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { TabsPage } from "../pages/tabs/tabs";
 import { LoginPage } from "../pages/login/login";
+import { ProfilePage } from "../pages/profile/profile";
+import { AboutPage } from "../pages/about/about";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    LoginPage
+    TabsPage,
+    LoginPage,
+    ProfilePage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,10 @@ import { LoginPage } from "../pages/login/login";
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage
+    TabsPage,
+    LoginPage,
+    ProfilePage,
+    AboutPage
   ],
   providers: [
     StatusBar,

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Facebook } from "@ionic-native/facebook";
-import { HomePage } from "../home/home";
 import { Platform } from 'ionic-angular';
 import { PagesUtils } from "../../utils/pagesUtils";
+import { TabsPage } from "../tabs/tabs";
 
 @Component({
   selector: 'page-login',
@@ -20,7 +20,7 @@ export class LoginPage {
   async checkLoginStatus() {
     let loginStatus = await this.facebook.getLoginStatus();
     if (loginStatus.status === 'connected') {
-      PagesUtils.moveAndRemove(this.navCtrl, HomePage);
+      PagesUtils.moveAndRemove(this.navCtrl, TabsPage);
     }
   }
 
@@ -28,9 +28,10 @@ export class LoginPage {
     try {
       await this.facebook.login(['email', 'public_profile']);
       let profile = await this.facebook.api('me?fields=name,email', []);
-      PagesUtils.moveAndRemove(this.navCtrl, HomePage, {profile: profile});
+      PagesUtils.moveAndRemove(this.navCtrl, TabsPage, { profile: profile });
     } catch (error) {
       console.log(error);
     }
   }
+
 }
