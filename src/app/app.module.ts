@@ -19,6 +19,7 @@ import { ProfileComponent } from "../components/profile/profile.cmp";
 
 import { AuthProvider } from '../providers/auth/auth';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+import { SpotifyProvider } from '../providers/spotify/spotify';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     Firebase,
     AuthProvider,
     FirebaseProvider,
+    SpotifyProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

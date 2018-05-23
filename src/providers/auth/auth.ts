@@ -13,8 +13,8 @@ export class AuthProvider {
     return this.facebookProfile;
   }
 
-  getAccessToken(): string {
-    return this.accessToken;
+  getAccessToken(): Promise<string> {
+    return this.facebook.getAccessToken();
   }
 
   async isLoggedIn(): Promise<boolean> {

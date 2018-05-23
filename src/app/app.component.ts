@@ -3,8 +3,8 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HTTP } from "@ionic-native/http";
+import { SpotifyProvider } from "../providers/spotify/spotify";
 import { LoginPage } from '../pages/login/login';
-import { SpotifyUtils } from "../utils/spotifyUtils";
 import { timer } from 'rxjs/observable/timer';
 declare var window;
 
@@ -15,7 +15,7 @@ export class MyApp {
   rootPage :any = LoginPage;
   showSplash = true;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, http: HTTP) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, http: HTTP, spotify: SpotifyProvider) {
     platform.ready().then(() => {
       statusBar.styleLightContent();
       statusBar.backgroundColorByHexString('#000000');
@@ -25,7 +25,7 @@ export class MyApp {
 
     window.handleOpenURL = function(url) {
       let code = url.split('code=')[1];
-      SpotifyUtils.exchangeCodeForToken(http, code);
+      spotify.exchangeCodeForToken(code);
     }
   }
 }

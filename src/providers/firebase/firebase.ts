@@ -27,7 +27,6 @@ export class FirebaseProvider {
       }
     }
 
-    console.log("Firebase token: " + this.firebaseToken);
     return this.firebaseToken;
   }
 
