@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { Facebook } from "@ionic-native/facebook";
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { HTTP } from '@ionic-native/http';
+import { Firebase } from "@ionic-native/firebase";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -17,6 +18,7 @@ import { AboutPage } from "../pages/about/about";
 import { ProfileComponent } from "../components/profile/profile.cmp";
 
 import { AuthProvider } from '../providers/auth/auth';
+import { FirebaseProvider } from '../providers/firebase/firebase';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { AuthProvider } from '../providers/auth/auth';
     Facebook,
     InAppBrowser,
     HTTP,
+    Firebase,
     AuthProvider,
+    FirebaseProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

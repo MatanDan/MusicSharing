@@ -4,6 +4,7 @@ import { Platform } from 'ionic-angular';
 import { PagesUtils } from "../../utils/pagesUtils";
 import { TabsPage } from "../tabs/tabs";
 import { AuthProvider } from "../../providers/auth/auth";
+import { FirebaseProvider} from "../../providers/firebase/firebase";
 
 @Component({
   selector: 'page-login',
@@ -12,7 +13,7 @@ import { AuthProvider } from "../../providers/auth/auth";
 export class LoginPage {
 
   constructor(public navCtrl: NavController, private toastCtrl: ToastController,
-              private auth: AuthProvider, private plt: Platform) {
+              private auth: AuthProvider, private firebase: FirebaseProvider, private plt: Platform) {
     this.plt.ready().then(readySource => {
       this.checkLoginStatus();
     });
@@ -21,14 +22,14 @@ export class LoginPage {
   async checkLoginStatus() {
     let isLoggedIn = await this.auth.isLoggedIn();
     if (isLoggedIn) {
-      PagesUtils.moveAndRemove(this.navCtrl, TabsPage);
+      this.moveToTabsPage();
     }
   }
 
   async login() {
     let isLoggedIn = await this.auth.login();
     if (isLoggedIn) {
-      PagesUtils.moveAndRemove(this.navCtrl, TabsPage);
+      this.moveToTabsPage();
     } else {
       this.toastCtrl.create({
         message: 'Failed to access facebook servers. Please try again.',
@@ -36,6 +37,11 @@ export class LoginPage {
         position: 'middle'
       });
     }
+  }
+
+  moveToTabsPage() {
+    this.firebase.getToken();
+    PagesUtils.moveAndRemove(this.navCtrl, TabsPage);
   }
 
 }

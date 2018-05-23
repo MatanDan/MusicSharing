@@ -31,7 +31,7 @@ export class AuthProvider {
 
       return false;
     } catch(error) {
-      console.log(error);
+      console.error("Could not access facebook data: " + error);
       return false;
     }
   }
@@ -41,7 +41,7 @@ export class AuthProvider {
       await this.facebook.login(['email', 'public_profile']);
       await this.saveProfileData();
     } catch (error) {
-      console.log(error);
+      console.error("Could not login to facebook: " + error);
       return false;
     }
     return true;

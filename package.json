@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "5.2.10",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/facebook": "^4.7.0",
+    "@ionic-native/firebase": "^4.7.0",
     "@ionic-native/http": "^4.7.0",
     "@ionic-native/in-app-browser": "^4.7.0",
     "@ionic-native/splash-screen": "4.7.0",
@@ -38,6 +39,7 @@
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-facebook4": "^2.1.0",
     "cordova-plugin-file": "^6.0.1",
+    "cordova-plugin-firebase": "^1.0.5",
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.19",
@@ -81,7 +83,8 @@
         "ANDROID_PATHPREFIX": "/"
       },
       "cordova-plugin-whitelist": {},
-      "cordova-plugin-advanced-http": {}
+      "cordova-plugin-advanced-http": {},
+      "cordova-plugin-firebase": {}
     },
     "platforms": [
       "android"

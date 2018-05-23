@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "277128447176",
+    "firebase_url": "https://musicsharing-52c6e.firebaseio.com",
+    "project_id": "musicsharing-52c6e",
+    "storage_bucket": "musicsharing-52c6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277128447176:android:fffb055ae0b8aa95",
+        "android_client_info": {
+          "package_name": "com.matan.musicshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277128447176-56b4rmuk8crp9igb1a1ivd9jsfr2mu2m.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "277128447176-56b4rmuk8crp9igb1a1ivd9jsfr2mu2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPjJNfKMklZKdeLO1aBsQruj7I7YHdKVg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
