@@ -13,6 +13,9 @@ import { TabsPage } from "../pages/tabs/tabs";
 import { LoginPage } from "../pages/login/login";
 import { ProfilePage } from "../pages/profile/profile";
 import { AboutPage } from "../pages/about/about";
+
+import { ProfileComponent } from "../components/profile/profile.cmp";
+
 import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
@@ -22,7 +25,8 @@ import { AuthProvider } from '../providers/auth/auth';
     TabsPage,
     LoginPage,
     ProfilePage,
-    AboutPage
+    AboutPage,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

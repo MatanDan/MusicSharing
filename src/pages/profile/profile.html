@@ -1,6 +1,13 @@
-<ion-content padding>
-  <button ion-button round block icon-start (click)="logout()">
-    <ion-icon name="logo-facebook"></ion-icon>
-    Unpair facebook account
-  </button>
+<ion-content>
+  <profile></profile>
+  <div class="buttons-area">
+    <button ion-button color="danger" icon-start (click)="logout()">
+      <ion-icon name="logo-facebook"></ion-icon>
+      Unpair facebook account
+    </button>
+    <button ion-button color="light" icon-start>
+      <ion-icon name="logo-facebook"></ion-icon>
+      Show friends list
+    </button>
+  </div>
 </ion-content>

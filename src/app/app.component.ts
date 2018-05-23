@@ -19,7 +19,7 @@ export class MyApp {
     platform.ready().then(() => {
       statusBar.styleLightContent();
       statusBar.backgroundColorByHexString('#000000');
-      timer(4000).subscribe(() => this.showSplash = false);
+      timer(1500).subscribe(() => this.showSplash = false);
       splashScreen.hide();
     });
 

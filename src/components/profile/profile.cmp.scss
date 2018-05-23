@@ -1,0 +1,34 @@
+profile {
+  .profile {
+    height: 70%;
+    background-color: #488aff;
+
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      margin-top: 10%;
+
+      border-radius: 50%;
+      border: 2px solid snow;
+    }
+
+    .username {
+      text-align: center;
+      font-size: 34px;
+      color: snow;
+    }
+
+    .id {
+      margin-top: 0%;
+      text-align: center;
+      font-size: 13px;
+      color: lightgray;
+    }
+
+    .text-area {
+      text-align: center;
+      font-size: 22px;
+      color: lightcyan;
+    }
+  }
+}
