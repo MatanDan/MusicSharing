@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Events, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HTTP } from "@ionic-native/http";
@@ -15,7 +15,8 @@ export class MyApp {
   rootPage :any = LoginPage;
   showSplash = true;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, http: HTTP, spotify: SpotifyProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, http: HTTP,
+              spotify: SpotifyProvider, events: Events) {
     platform.ready().then(() => {
       statusBar.styleLightContent();
       statusBar.backgroundColorByHexString('#000000');
@@ -24,8 +25,12 @@ export class MyApp {
     });
 
     window.handleOpenURL = function(url) {
-      let code = url.split('code=')[1];
-      spotify.exchangeCodeForToken(code);
+      if (url.includes('error=')) {
+        events.publish('spotify:auth', false);
+      } else {
+        let code = url.split('code=')[1];
+        spotify.exchangeCodeForToken(code);
+      }
     }
   }
 }

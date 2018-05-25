@@ -11,7 +11,7 @@ export class SpotifyProvider {
   }
 
   public clientAuth() {
-    var scopes = 'user-read-private user-modify-playback-state';
+    var scopes = 'user-read-private user-read-email user-read-birthdate user-modify-playback-state';
     let URL = 'https://accounts.spotify.com/authorize' +
       '?response_type=code' +
       '&client_id=' + 'de7e56c3748b49feaa5ea0aeb46044ba' +
