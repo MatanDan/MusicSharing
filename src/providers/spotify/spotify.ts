@@ -24,7 +24,7 @@ export class SpotifyProvider {
 
   public async exchangeCodeForToken(code: string) {
     try {
-      const httpResponse = await this.http.post('http://192.168.1.26:8080/newClient', {
+      const httpResponse = await this.http.post('http://192.168.1.26:8080/clients/new', {
         facebookId: this.auth.getProfile().id,
         facebookToken: await this.auth.getAccessToken(),
         firebaseToken: await this.firebase.getToken(),
@@ -37,6 +37,5 @@ export class SpotifyProvider {
       console.error("Failed to exchange spotify code for spotify token: " + JSON.stringify(ex));
     }
   }
-
 
 }

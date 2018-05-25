@@ -57,4 +57,5 @@ export class HomePage {
     this.authToast.present();
     this.spotify.clientAuth();
   }
+
 }
