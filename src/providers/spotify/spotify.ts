@@ -3,11 +3,13 @@ import { HTTP } from "@ionic-native/http";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { AuthProvider } from "../auth/auth";
 import { FirebaseProvider } from "../firebase/firebase";
+import { Events } from "ionic-angular";
 
 @Injectable()
 export class SpotifyProvider {
 
-  constructor(private http: HTTP, private iab: InAppBrowser, private auth: AuthProvider, private firebase: FirebaseProvider) {
+  constructor(private http: HTTP, private iab: InAppBrowser, private auth: AuthProvider,
+              private firebase: FirebaseProvider, private events: Events) {
   }
 
   public clientAuth() {
@@ -28,7 +30,9 @@ export class SpotifyProvider {
         firebaseToken: await this.firebase.getToken(),
         spotifyCode: code
       }, {});
-      console.log(httpResponse.data);
+      if (httpResponse.status === 200) {
+        this.events.publish('spotify:auth', true);
+      }
     } catch (ex) {
       console.error("Failed to exchange spotify code for spotify token: " + JSON.stringify(ex));
     }

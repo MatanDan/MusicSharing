@@ -14,8 +14,10 @@ import { TabsPage } from "../pages/tabs/tabs";
 import { LoginPage } from "../pages/login/login";
 import { ProfilePage } from "../pages/profile/profile";
 import { AboutPage } from "../pages/about/about";
+import { BroadcastPage } from "../pages/broadcast/broadcast";
 
 import { ProfileComponent } from "../components/profile/profile.cmp";
+import { BroadcastComponent } from "../components/broadcast/broadcast.cmp";
 
 import { AuthProvider } from '../providers/auth/auth';
 import { FirebaseProvider } from '../providers/firebase/firebase';
@@ -29,7 +31,9 @@ import { SpotifyProvider } from '../providers/spotify/spotify';
     LoginPage,
     ProfilePage,
     AboutPage,
-    ProfileComponent
+    BroadcastPage,
+    ProfileComponent,
+    BroadcastComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { SpotifyProvider } from '../providers/spotify/spotify';
     TabsPage,
     LoginPage,
     ProfilePage,
-    AboutPage
+    AboutPage,
+    BroadcastPage
   ],
   providers: [
     StatusBar,

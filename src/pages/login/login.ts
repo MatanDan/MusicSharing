@@ -31,12 +31,12 @@ export class LoginPage {
     if (isLoggedIn) {
       this.moveToTabsPage();
     } else {
-      let toast = this.toastCtrl.create({
+      let failedToast = this.toastCtrl.create({
         message: 'Failed to access facebook servers. Please try again.',
         duration: 3000,
         position: 'bottom'
       });
-      toast.present();
+      failedToast.present();
     }
   }
 
