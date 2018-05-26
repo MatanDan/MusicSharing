@@ -7,6 +7,7 @@ import { Events } from "ionic-angular";
 
 @Injectable()
 export class SpotifyProvider {
+  private accessToken: string;
 
   constructor(private http: HTTP, private iab: InAppBrowser, private auth: AuthProvider,
               private firebase: FirebaseProvider, private events: Events) {
@@ -35,6 +36,7 @@ export class SpotifyProvider {
       }
     } catch (ex) {
       console.error("Failed to exchange spotify code for spotify token: " + JSON.stringify(ex));
+      this.events.publish('spotify:auth', false);
     }
   }
 

@@ -9,8 +9,10 @@ import { timer } from 'rxjs/observable/timer';
 export class BroadcastPage {
   private leavingToast: Toast;
   private isLeaving: boolean;
+  private broadcastId: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController) {
+    this.broadcastId = this.navParams.get('broadcastId');
   }
 
   ionViewDidLoad() {

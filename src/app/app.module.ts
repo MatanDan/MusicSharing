@@ -22,6 +22,7 @@ import { BroadcastComponent } from "../components/broadcast/broadcast.cmp";
 import { AuthProvider } from '../providers/auth/auth';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 import { SpotifyProvider } from '../providers/spotify/spotify';
+import { BroadcastsProvider } from '../providers/broadcasts/broadcasts';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { SpotifyProvider } from '../providers/spotify/spotify';
     AuthProvider,
     FirebaseProvider,
     SpotifyProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BroadcastsProvider
   ]
 })
 export class AppModule {}

@@ -6,6 +6,7 @@ import { PagesUtils } from "../../utils/pagesUtils";
 import { AuthProvider } from "../../providers/auth/auth";
 import { SpotifyProvider } from "../../providers/spotify/spotify";
 import { BroadcastPage } from "../broadcast/broadcast";
+import { BroadcastsProvider } from "../../providers/broadcasts/broadcasts";
 
 @Component({
   selector: 'page-home',
@@ -15,23 +16,26 @@ export class HomePage {
   private authToast: Toast;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth: AuthProvider,
-              private plt: Platform, private spotify: SpotifyProvider, private events: Events,
-              private toastCtrl: ToastController) {
+              private plt: Platform, private spotify: SpotifyProvider, public events: Events,
+              private broadcasts: BroadcastsProvider, private toastCtrl: ToastController) {
     this.plt.ready().then(readySource => {
-      this.checkLoginStatus().then((isLoggedIn: boolean) => {
+      this.checkLoginStatus().then((isLoggedIn) => {
         if (isLoggedIn) {
-          this.events.subscribe("spotify:auth", (authSuccessfully: boolean) => {
+          this.events.subscribe('spotify:auth', async (authSuccessfully: boolean) => {
             if (authSuccessfully) {
               this.authToast.dismissAll();
-              this.navCtrl.push(BroadcastPage);
-            } else {
-              let failedToast = this.toastCtrl.create({
-                message: 'Spotify authorization process failed. Please re-try.',
-                duration: 3000,
-                position: 'bottom'
-              });
-              failedToast.present();
+              let createdBroadcastId = await this.broadcasts.newBroadcast();
+              if (createdBroadcastId) {
+                this.navCtrl.push(BroadcastPage, {broadcastId: createdBroadcastId});
+                return;
+              }
             }
+            let failedToast = this.toastCtrl.create({
+              message: 'Spotify authorization process failed. Please re-try.',
+              duration: 4000,
+              position: 'bottom'
+            });
+            failedToast.present();
           });
         }
       });
@@ -55,6 +59,7 @@ export class HomePage {
       position: 'bottom'
     });
     this.authToast.present();
+
     this.spotify.clientAuth();
   }
 
