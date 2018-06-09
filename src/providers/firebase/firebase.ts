@@ -30,4 +30,8 @@ export class FirebaseProvider {
     return this.firebaseToken;
   }
 
+  async logout(): Promise<any> {
+    return this.firebase.unregister();
+  }
+
 }

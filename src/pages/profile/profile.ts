@@ -3,6 +3,7 @@ import { App, NavController, NavParams, ToastController } from 'ionic-angular';
 import { PagesUtils } from "../../utils/pagesUtils";
 import { LoginPage } from "../login/login";
 import { AuthProvider } from "../../providers/auth/auth";
+import { FirebaseProvider } from "../../providers/firebase/firebase";
 
 @Component({
   selector: 'page-profile',
@@ -10,10 +11,11 @@ import { AuthProvider } from "../../providers/auth/auth";
 })
 export class ProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private app: App,
-              private toastCtrl: ToastController, private auth: AuthProvider) {
+              private toastCtrl: ToastController, private auth: AuthProvider, private firebase: FirebaseProvider) {
   }
 
   async logout() {
+    await this.firebase.logout();
     let isLoggedOut = await this.auth.logout();
     if (isLoggedOut) {
       this.toastCtrl.create({
