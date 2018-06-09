@@ -7,6 +7,7 @@ import { Facebook } from "@ionic-native/facebook";
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { HTTP } from '@ionic-native/http';
 import { Firebase } from "@ionic-native/firebase";
+import { Network } from "@ionic-native/network";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -57,6 +58,7 @@ import { BroadcastsProvider } from '../providers/broadcasts/broadcasts';
     InAppBrowser,
     HTTP,
     Firebase,
+    Network,
     AuthProvider,
     FirebaseProvider,
     SpotifyProvider,

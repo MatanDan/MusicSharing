@@ -19,11 +19,13 @@ export class HomePage {
               private plt: Platform, private spotify: SpotifyProvider, public events: Events,
               private broadcasts: BroadcastsProvider, private toastCtrl: ToastController) {
     this.plt.ready().then(readySource => {
-      this.checkLoginStatus().then((isLoggedIn) => {
+      this.checkLoginStatus().then(isLoggedIn => {
         if (isLoggedIn) {
           this.events.subscribe('spotify:auth', async (authSuccessfully: boolean) => {
             if (authSuccessfully) {
-              this.authToast.dismissAll();
+              if (this.authToast) {
+                this.authToast.dismissAll();
+              }
               let createdBroadcastId = await this.broadcasts.newBroadcast();
               if (createdBroadcastId) {
                 this.navCtrl.push(BroadcastPage, {broadcastId: createdBroadcastId});
@@ -31,7 +33,7 @@ export class HomePage {
               }
             }
             let failedToast = this.toastCtrl.create({
-              message: 'Spotify authorization process failed. Please re-try.',
+              message: 'Broadcasting process failed. Please re-try.',
               duration: 4000,
               position: 'bottom'
             });
@@ -45,8 +47,14 @@ export class HomePage {
   async checkLoginStatus(): Promise<boolean> {
     let isLoggedIn = await this.auth.isLoggedIn();
     if (!isLoggedIn) {
-      PagesUtils.moveAndRemove(this.navCtrl, LoginPage);
-      return false;
+      this.plt.exitApp();
+    } else {
+      // Client is logged in
+      let broadcastId = await this.auth.getClientBroadcast();
+      if (broadcastId) {
+        this.navCtrl.push(BroadcastPage, {broadcastId: broadcastId});
+        return;
+      }
     }
 
     return true;

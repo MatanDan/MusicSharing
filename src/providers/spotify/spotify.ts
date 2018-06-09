@@ -25,13 +25,12 @@ export class SpotifyProvider {
 
   public async exchangeCodeForToken(code: string) {
     try {
-      const httpResponse = await this.http.post('http://192.168.1.26:8080/clients/new', {
-        facebookId: this.auth.getProfile().id,
-        facebookToken: await this.auth.getAccessToken(),
-        firebaseToken: await this.firebase.getToken(),
+      const profile = await this.auth.getProfile();
+      const httpResponse = await this.http.post('http://192.168.1.33:8080/clients/spotify', {
+        facebookId: profile.id,
         spotifyCode: code
       }, {});
-      if (httpResponse.status === 200) {
+      if (httpResponse.status === 200 && JSON.parse(httpResponse.data).status) {
         this.events.publish('spotify:auth', true);
       }
     } catch (ex) {

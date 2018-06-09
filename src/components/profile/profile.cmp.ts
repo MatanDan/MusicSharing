@@ -13,10 +13,11 @@ export class ProfileComponent {
   constructor(private auth: AuthProvider) {
   }
 
-  ngOnInit() {
-    this.profilePhoto = this.auth.getProfile().picture.data.url;
-    this.username = this.auth.getProfile().name;
-    this.id = this.auth.getProfile().id;
+  async ngOnInit() {
+    const profile = await this.auth.getProfile();
+    this.profilePhoto = profile.picture.data.url;
+    this.username = profile.name;
+    this.id = profile.id;
   }
 
 }

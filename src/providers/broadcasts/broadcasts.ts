@@ -9,8 +9,9 @@ export class BroadcastsProvider {
   }
 
   public async newBroadcast(): Promise<number> {
-    const httpResponse = await this.http.post('http://192.168.1.26:8080/broadcasts/new', {
-      broadcasterId: this.auth.getProfile().id
+    const profile = await this.auth.getProfile();
+    const httpResponse = await this.http.post('http://192.168.1.33:8080/broadcasts/new', {
+      broadcasterId: profile.id
     }, {});
     if (httpResponse.status === 200) {
       let data = JSON.parse(httpResponse.data);

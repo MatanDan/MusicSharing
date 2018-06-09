@@ -6,6 +6,7 @@ import { HTTP } from "@ionic-native/http";
 import { SpotifyProvider } from "../providers/spotify/spotify";
 import { LoginPage } from '../pages/login/login';
 import { timer } from 'rxjs/observable/timer';
+import { AuthProvider } from "../providers/auth/auth";
 declare var window;
 
 @Component({
@@ -16,11 +17,16 @@ export class MyApp {
   showSplash = true;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, http: HTTP,
-              spotify: SpotifyProvider, events: Events) {
+              spotify: SpotifyProvider, events: Events, auth: AuthProvider) {
     platform.ready().then(() => {
       statusBar.styleLightContent();
       statusBar.backgroundColorByHexString('#000000');
-      timer(1500).subscribe(() => this.showSplash = false);
+      timer(1500).subscribe(async () => {
+        let isServerOnline = await auth.serverHealthCheck();
+        if (isServerOnline) {
+          this.showSplash = false;
+        }
+      });
       splashScreen.hide();
     });
 

@@ -17,7 +17,7 @@ export class BroadcastPage {
 
   ionViewDidLoad() {
     let broadcastToast = this.toastCtrl.create({
-      message: 'Starting a broadcast!',
+      message: 'Joining a broadcast!',
       duration: 2000,
       position: 'bottom'
     });

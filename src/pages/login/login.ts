@@ -1,22 +1,45 @@
 import { Component } from '@angular/core';
-import {NavController, ToastController} from 'ionic-angular';
+import { AlertController, NavController, ToastController} from 'ionic-angular';
 import { Platform } from 'ionic-angular';
 import { PagesUtils } from "../../utils/pagesUtils";
 import { TabsPage } from "../tabs/tabs";
 import { AuthProvider } from "../../providers/auth/auth";
-import { FirebaseProvider} from "../../providers/firebase/firebase";
+import { FirebaseProvider } from "../../providers/firebase/firebase";
+import { Network } from "@ionic-native/network";
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
   constructor(public navCtrl: NavController, private toastCtrl: ToastController,
-              private auth: AuthProvider, private firebase: FirebaseProvider, private plt: Platform) {
-    this.plt.ready().then(readySource => {
-      this.checkLoginStatus();
+              private auth: AuthProvider, private firebase: FirebaseProvider,
+              private plt: Platform, private network: Network, private alertCtrl: AlertController) {
+    this.plt.ready().then(async readySource =>  {
+      // Valid network connection
+      if (this.network.type === 'none' || !await this.auth.serverHealthCheck()) {
+        this.offlineAlert();
+      } else {
+        this.checkLoginStatus();
+      }
     });
+  }
+
+  async offlineAlert() {
+    let confirm = this.alertCtrl.create({
+      title: 'Check your internet connection',
+      message: 'We have failed to access internet services. Please re-launch the application when internet is available again.',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Exit',
+          handler: () => {
+            this.plt.exitApp();
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   async checkLoginStatus() {
@@ -32,7 +55,7 @@ export class LoginPage {
       this.moveToTabsPage();
     } else {
       let failedToast = this.toastCtrl.create({
-        message: 'Failed to access facebook servers. Please try again.',
+        message: 'Failed to access servers. Please try again.',
         duration: 3000,
         position: 'bottom'
       });
@@ -41,7 +64,6 @@ export class LoginPage {
   }
 
   moveToTabsPage() {
-    this.firebase.getToken();
     PagesUtils.moveAndRemove(this.navCtrl, TabsPage);
   }
 

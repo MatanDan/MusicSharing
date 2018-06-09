@@ -9,7 +9,6 @@ import { AuthProvider } from "../../providers/auth/auth";
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
   constructor(public navCtrl: NavController, public navParams: NavParams, private app: App,
               private toastCtrl: ToastController, private auth: AuthProvider) {
   }
